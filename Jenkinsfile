@@ -6,4 +6,20 @@ pipeline {
   stages {
     stage('Checkout Stage') {
       steps {
-        git credentialsId : 
+        
+        git  url:'https://github.com/Manasa-putha/Newcodingboard/main/Jenkinsfile'
+      }
+    }
+    stage('Build Stage') {
+      steps {
+        bat 'dotnet build'
+      }
+    }
+    stage('Test Stage') {
+      steps {
+        echo "Application tested"
+      }
+    }
+  }
+}
+        
