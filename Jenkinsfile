@@ -7,7 +7,7 @@ pipeline {
     stage('Checkout Stage') {
       steps {
         
-        git  url:'https://github.com/Manasa-putha/Newcodingboard/main/Jenkinsfile'
+        git  url:'https://github.com/Manasa-putha/Newcodingboard'
       }
     }
     stage('Build Stage') {
