@@ -7,7 +7,7 @@ pipeline {
     stage('Checkout Stage') {
       steps {
         
-        git  url:'https://github.com/Manasa-putha/Newcodingboard/blob/main/Jenkinsfile'
+        git  credentialsId:2e9e156c-ea91-4189-8e75-de3b0207816a,url:'https://github.com/Manasa-putha/Newcodingboard/blob/main/Jenkinsfile'
       }
     }
     stage('Build Stage') {
