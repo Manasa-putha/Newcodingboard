@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BookEventread.Models.EventModel>
+
+@{
+    ViewBag.Title = "HomePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>HomePage</h2>
+
+<div class="panel panel-body">
+    <div class="col-md-6">
+        <table class="table ">
+            <h4>UpcomingEvents</h4>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (item.Type == BookEventread.Models.typeOfEvent.Public && item.Date > DateTime.Now)
+                    {
+                        <td>
+                            <a href="@Url.Action("EventView", "Home", new { Id = item.EventId })">  @Html.DisplayFor(modelItem => item.Title)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                    }
+
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <h4>PastEvents</h4>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (item.Type == BookEventread.Models.typeOfEvent.Public && item.Date < DateTime.Now)
+                    {
+                        <td>
+                            <a href="@Url.Action("EventView", "Home", new { Id = item.EventId })">@Html.DisplayFor(modelItem => item.Title)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                    }
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
